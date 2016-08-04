@@ -18,7 +18,10 @@
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
-    "style-loader": "^0.13.1"
+    "style-loader": "^0.13.1",
+    "webpack-preset": "^0.2.0",
+    "webpack-preset-babel": "^0.2.0",
+    "webpack-preset-babel-stage-1": "^0.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.11.4",
