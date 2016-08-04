@@ -14,7 +14,8 @@ const style = {
   bottom: {
     backgroundColor: 'grey',
     opacity: 0.5,
-    height: '20px'
+    height: '20px',
+    marginBottom: '40px'
   }
 
 }
