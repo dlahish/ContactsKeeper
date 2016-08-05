@@ -37,7 +37,6 @@ const styles = {
 
 export default class Table extends Component {
   render() {
-    console.log(this.props.contacts)
     return (
       <table style={styles.table}>
         <thead>

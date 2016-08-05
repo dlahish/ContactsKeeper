@@ -13,6 +13,25 @@ const styles = {
   }
 }
 
+function filterContacts(contacts, searchInput) {
+  if (searchInput.length == 0) {
+    return contacts
+  }
+
+  const con = contacts
+  let filteredContacts = []
+  con.map(contact => {
+    const contactFirstTemp = contact.fname.toUpperCase().slice(0, searchInput.length)
+    const searchFirstTemp  = searchInput.toUpperCase()
+    const contactLastTemp = contact.lname.toUpperCase().slice(0, searchInput.length)
+    const searchLastTemp  = searchInput.toUpperCase()
+    if (contactFirstTemp == searchFirstTemp || contactLastTemp == searchLastTemp) {
+      filteredContacts.push(contact)
+    }
+  })
+  return filteredContacts
+}
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -40,7 +59,6 @@ class App extends Component {
   saveContact(e) {
     const { dispatch } = this.props
     e.preventDefault()
-    console.log('saveContact -----')
     const fname = e.target.fname.value
     const lname = e.target.lname.value
     const dob = e.target.dob.value
@@ -52,6 +70,7 @@ class App extends Component {
   }
 
   render() {
+    const filteredContacts = filterContacts(this.props.contacts, this.props.searchInput)
     return (
       <div>
         <Header />
@@ -66,7 +85,7 @@ class App extends Component {
             closeModal={this.handleCloseModal}
             modalOpen={this.props.modalOpen}
           />
-          <Table contacts={this.props.contacts} />
+          <Table contacts={filteredContacts} />
         </div>
       </div>
     )
