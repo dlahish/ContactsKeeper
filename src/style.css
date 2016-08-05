@@ -2,6 +2,7 @@ body {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
   padding: 20px 40px;
+  color: #333333;
 }
 
 p, input { margin, padding: 0 }
@@ -21,11 +22,15 @@ p, input { margin, padding: 0 }
 
 .modal {
   background-color: #fefefe;
-  margin: 7% auto; /* 15% from the top and centered */
+  margin: 8% auto; /* 15% from the top and centered */
   border: 1px solid #888;
   width: 40%; /* Could be more or less, depending on screen size */
   box-shadow: 10px 10px 5px #888888;
   border-radius: 5px;
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 1.5s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
 }
 
 .close {
@@ -40,4 +45,14 @@ p, input { margin, padding: 0 }
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+@-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 50; opacity: 1}
 }

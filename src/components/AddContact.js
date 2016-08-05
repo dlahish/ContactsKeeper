@@ -29,7 +29,7 @@ const styles = {
   },
   mainContent: {
     padding: '3%',
-    borderBottom: '1px solid grey',
+    // borderBottom: '1px solid grey',
     paddingBottom: '1px'
   },
   inputField: {
@@ -57,7 +57,7 @@ const styles = {
   },
   footer: {
     paddingRight: '10px',
-    borderTop: '1px solid black',
+    // borderTop: '1px solid black',
     height: '30px'
   },
   saveButton: {
@@ -68,6 +68,11 @@ const styles = {
     width: '50px',
     backgroundColor: '#595959',
     color: 'white'
+  },
+  hr: {
+    position: 'relative',
+    width: '510px',
+    right: '15px'
   }
 }
 
@@ -120,6 +125,7 @@ export default class AddContact extends Component {
                     <p style={styles.label}>Notes</p>
                     <textarea rows="2" name="notes" cols="50" style={styles.input}/>
                   </div>
+                  <hr style={styles.hr}/>
                   <div style={styles.footer}>
                     <button
                       type="submit"
