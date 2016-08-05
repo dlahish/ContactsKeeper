@@ -74,20 +74,7 @@ const styles = {
 export default class AddContact extends Component {
   constructor(props) {
     super(props)
-    this.closeModal = this.closeModal.bind(this)
-    this.openModal = this.openModal.bind(this)
 
-    this.state = {
-      modalOpen: true
-    }
-  }
-
-  closeModal() {
-    this.setState({ modalOpen: false })
-  }
-
-  openModal() {
-    this.setState({ modalOpen: true })
   }
 
   render() {
@@ -95,47 +82,47 @@ export default class AddContact extends Component {
       <div style={styles.buttonDiv}>
         <button
           style={styles.button}
-          onClick={this.openModal}
+          onClick={this.props.openModal}
         >
           <i className="fa fa-plus-circle" style={styles.addIcon}></i>
             Contacts Keeper
         </button>
-        {this.state.modalOpen ?
+        {this.props.modalOpen ?
           <div className='modal-background'>
             <div className='modal'>
               <div style={styles.modalHeader}>
                 Contacts Keeper
-                <i className="fa fa-times-circle close" aria-hidden="true" style={styles.closeIcon} onClick={this.closeModal}></i>
+                <i className="fa fa-times-circle close" aria-hidden="true" style={styles.closeIcon} onClick={this.props.closeModal}></i>
               </div>
               <div style={styles.mainContent}>
-                <form>
+                <form onSubmit={this.props.saveContact}>
                   <div style={styles.inputField}>
                     <p style={styles.label}>First Name</p>
-                    <input type='text' style={styles.input}/>
+                    <input type='text' name="fname" style={styles.input} required/>
                   </div>
                   <div style={styles.inputFieldRight}>
                     <p style={styles.label}>Last Name</p>
-                    <input type='text' style={styles.input}/>
+                    <input type='text' name="lname" style={styles.input} required/>
                   </div>
                   <div style={styles.inputField}>
                     <p style={styles.label}>Date of Birth</p>
-                    <input type='text' style={styles.input}/>
+                    <input type="date" name="dob" style={styles.input}/>
                   </div>
                   <div style={styles.inputFieldRight}>
                     <p style={styles.label}>Phone Number</p>
-                    <input type='text' style={styles.input}/>
+                    <input type="number" name="phone" style={styles.input} />
                   </div>
                   <div style={styles.inputField}>
                     <p style={styles.label}>Email</p>
-                    <input type='text' style={styles.input}/>
+                    <input type='email' name="email" style={styles.input} />
                   </div>
                   <div style={styles.inputField}>
                     <p style={styles.label}>Notes</p>
-                    <textarea rows="2" cols="50" style={styles.input}/>
+                    <textarea rows="2" name="notes" cols="50" style={styles.input}/>
                   </div>
                   <div style={styles.footer}>
                     <button
-                      onClick={this.closeModal}
+                      type="submit"
                       style={styles.saveButton}
                     >Save</button>
                   </div>
@@ -148,6 +135,9 @@ export default class AddContact extends Component {
   }
 }
 
-// AddContact.propTypes = {
-//   addContact: PropTypes.func.isRequired
-// }
+AddContact.propTypes = {
+  saveContact: PropTypes.func.isRequired,
+  openModal: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  modalOpen: PropTypes.bool.isRequired
+}

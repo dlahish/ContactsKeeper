@@ -1,34 +1,58 @@
 import { combineReducers } from 'redux'
 import {
   SEARCH_INPUT,
-  OPEN_MODAL
+  SAVE_CONTACT,
+  OPEN_MODAL,
+  CLOSE_MODAL
 } from './actions'
 
-const initialState = {
-  searchInput: '',
-  contacts: [],
-  modalOpen: false
-}
-
-function contacts(state = initialState, action) {
+function modal(state = false, action) {
   switch (action.type) {
-    case SEARCH_INPUT:
-      return Object.assign({}, state, {
-        searchInput: action.searchInput
-      })
     case OPEN_MODAL:
-      if (state.modalOpen == true) {
-        return { ...state, modalOpen: false }
-      } else {
-        return { ...state, modalOpen: true }
-      }
+      return true
+    case CLOSE_MODAL:
+      return false
     default:
       return state
   }
 }
 
+function search(state = '', action) {
+  switch (action.type) {
+    case SEARCH_INPUT:
+      return state = action.searchInput
+    default:
+      return state
+  }
+}
+
+function contacts(state = contactsInit, action) {
+  switch (action.type) {
+    case SAVE_CONTACT:
+      let newContact = {
+        fname: action.fname,
+        lname: action.lname,
+        dob: action.dob,
+        phone: action.phone,
+        email: action.email,
+        notes: action.notes
+      }
+      return [ ...state, newContact ]
+    default:
+      return state
+  }
+}
+
+const contactsInit = [
+  {fname: 'Nadav', lname: 'Lachish', bod: '', phone:'0506803382', email: 'd_lahish@www.www', notes: 'well well'},
+  {fname: 'Elad', lname: 'Gellert', bod: '', phone:'123455', email: '', note: ''},
+  {fname: 'Yoni', lname: 'Smile', bod: '', phone:'456', email: '', note: ''}
+]
+
 const rootReducer = combineReducers({
-  contacts
+  contacts,
+  search,
+  modal
 })
 
 export default rootReducer

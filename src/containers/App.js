@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { searchInput, openModal } from '../actions'
+import { searchInput, saveContactToStore, openModal, closeModal } from '../actions'
 import AddContact from '../components/AddContact'
 import Header from '../components/Header'
 import Search from '../components/Search'
@@ -17,7 +17,19 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.handleSearchInputChange = this.handleSearchInputChange.bind(this)
+    this.saveContact = this.saveContact.bind(this)
     this.handleOpenModal = this.handleOpenModal.bind(this)
+    this.handleCloseModal = this.handleCloseModal.bind(this)
+  }
+
+  handleOpenModal() {
+    const { dispatch } = this.props
+    dispatch(openModal())
+  }
+
+  handleCloseModal() {
+    const { dispatch } = this.props
+    dispatch(closeModal())
   }
 
   handleSearchInputChange(e) {
@@ -25,9 +37,18 @@ class App extends Component {
     dispatch(searchInput(e.target.value))
   }
 
-  handleOpenModal() {
+  saveContact(e) {
     const { dispatch } = this.props
-    dispatch(openModal())
+    e.preventDefault()
+    console.log('saveContact -----')
+    const fname = e.target.fname.value
+    const lname = e.target.lname.value
+    const dob = e.target.dob.value
+    const phone = e.target.phone.value
+    const email = e.target.email.value
+    const notes = e.target.notes.value
+    dispatch(saveContactToStore(fname, lname, dob, phone, email, notes))
+    dispatch(closeModal())
   }
 
   render() {
@@ -39,8 +60,13 @@ class App extends Component {
             value={this.props.searchInput}
             onSearchChange={this.handleSearchInputChange}
           />
-          <AddContact handleOpenModal={this.handleOpenModal}/>
-          <Table contacts={this.props.contacts} modalOpen={this.props.modalOpen} />
+          <AddContact
+            saveContact={this.saveContact}
+            openModal={this.handleOpenModal}
+            closeModal={this.handleCloseModal}
+            modalOpen={this.props.modalOpen}
+          />
+          <Table contacts={this.props.contacts} />
         </div>
       </div>
     )
@@ -49,15 +75,16 @@ class App extends Component {
 
 App.propTypes = {
   searchInput: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
   modalOpen: PropTypes.bool.isRequired,
-  dispatch: PropTypes.func.isRequired
+  contacts: PropTypes.array.isRequired
 }
 
 function mapStateToProps(state) {
   return {
-    searchInput: state.contacts.searchInput,
-    contacts: state.contacts.contacts,
-    modalOpen: state.contacts.modalOpen
+    searchInput: state.search,
+    contacts: state.contacts,
+    modalOpen: state.modal
   }
 }
 
