@@ -56,15 +56,9 @@ class App extends Component {
     dispatch(searchInput(e.target.value))
   }
 
-  saveContact(e) {
+  saveContact(fname, lname, dob, phone, email, notes) {
     const { dispatch } = this.props
-    e.preventDefault()
-    const fname = e.target.fname.value
-    const lname = e.target.lname.value
-    const dob = e.target.dob.value
-    const phone = e.target.phone.value
-    const email = e.target.email.value
-    const notes = e.target.notes.value
+
     dispatch(saveContactToStore(fname, lname, dob, phone, email, notes))
     dispatch(closeModal())
   }

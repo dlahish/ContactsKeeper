@@ -79,7 +79,24 @@ const styles = {
 export default class AddContact extends Component {
   constructor(props) {
     super(props)
+    this.validate = this.validate.bind(this)
+  }
 
+  validate(e) {
+    e.preventDefault()
+    const dob = e.target.dob.value
+    const year = dob.slice(0,4)
+    const month = dob.slice(5,7)
+    const day = dob.slice(8)
+    const formattedDob = day + '/' + month + '/' + year
+
+    const fname = e.target.fname.value
+    const lname = e.target.lname.value
+    const phone = e.target.phone.value
+    const email = e.target.email.value
+    const notes = e.target.notes.value
+
+    this.props.saveContact(fname, lname, formattedDob, phone, email, notes);
   }
 
   render() {
@@ -100,7 +117,7 @@ export default class AddContact extends Component {
                 <i className="fa fa-times-circle close" aria-hidden="true" style={styles.closeIcon} onClick={this.props.closeModal}></i>
               </div>
               <div style={styles.mainContent}>
-                <form onSubmit={this.props.saveContact}>
+                <form onSubmit={this.validate}>
                   <div style={styles.inputField}>
                     <p style={styles.label}>First Name</p>
                     <input type='text' name="fname" style={styles.input} required/>
