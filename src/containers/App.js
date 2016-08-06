@@ -39,15 +39,21 @@ class App extends Component {
     this.saveContact = this.saveContact.bind(this)
     this.handleOpenModal = this.handleOpenModal.bind(this)
     this.handleCloseModal = this.handleCloseModal.bind(this)
+
+    this.state = {
+      addContactButtonClass: "add-contact-button"
+    }
   }
 
   handleOpenModal() {
     const { dispatch } = this.props
+    this.setState({ addContactButtonClass: "add-contact-button-clicked" })
     dispatch(openModal())
   }
 
   handleCloseModal() {
     const { dispatch } = this.props
+    this.setState({ addContactButtonClass: "add-contact-button" })
     dispatch(closeModal())
   }
 
@@ -78,6 +84,7 @@ class App extends Component {
             openModal={this.handleOpenModal}
             closeModal={this.handleCloseModal}
             modalOpen={this.props.modalOpen}
+            addContactButtonClass={this.state.addContactButtonClass}
           />
           <Table contacts={filteredContacts} />
         </div>

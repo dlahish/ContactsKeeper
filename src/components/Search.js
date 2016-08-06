@@ -7,19 +7,21 @@ const styles = {
   },
   icon: {
     backgroundColor: '#4d79ff',
-    color: 'white',
-    padding: '0 2 0 2',
-    fontSize: '27px',
+    color: '#f2f2f2',
+    padding: '3 5 4 5',
+    fontSize: '20px',
     position: 'relative',
-    top: '3px',
-    right: '1px',
-    cursor: 'pointer'
+    top: '0px',
+    right: '3px',
+    cursor: 'pointer',
+    borderRadius: '4px'
   },
   input: {
     fontSize: '18px',
     border: '2px solid grey',
     borderRadius: '3px',
-    borderRight: 'none'
+    borderRight: 'none',
+    paddingLeft: '8px'
   }
 }
 

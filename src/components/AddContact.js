@@ -4,14 +4,6 @@ const styles = {
   addIcon: {
     marginRight: '6px'
   },
-  button: {
-    background: '#4d79ff',
-    color: 'white',
-    fontWeight: 400,
-    borderRadius: '2px',
-    outline: 'none',
-    fontSize: '18px'
-  },
   buttonDiv: {
     display: 'inline-block',
     float: 'right'
@@ -43,17 +35,22 @@ const styles = {
     fontSize: '15px'
   },
   input: {
-    borderRadius: '4px',
-    fontSize: '18px'
+    borderRadius: '3px',
+    fontSize: '18px',
+    borderStyle: 'none',
+    border: '1px solid grey'
   },
   inputFieldRight: {
     display: 'inline-block',
     float: 'right',
     paddingRight: 0
   },
-  textarea: {
-    borderRadius: '4px',
-    fontSize: '18px'
+  notesInput: {
+    borderRadius: '3px',
+    fontSize: '18px',
+    borderStyle: 'none',
+    border: '1px solid grey',
+    width: '242%'
   },
   footer: {
     paddingRight: '10px',
@@ -67,7 +64,9 @@ const styles = {
     height: '25px',
     width: '50px',
     backgroundColor: '#595959',
-    color: 'white'
+    color: 'white',
+    borderStyle: 'none',
+    cursor: 'pointer'
   },
   hr: {
     position: 'relative',
@@ -103,8 +102,8 @@ export default class AddContact extends Component {
     return (
       <div style={styles.buttonDiv}>
         <button
-          style={styles.button}
           onClick={this.props.openModal}
+          className={this.props.addContactButtonClass}
         >
           <i className="fa fa-plus-circle" style={styles.addIcon}></i>
             Contacts Keeper
@@ -137,10 +136,10 @@ export default class AddContact extends Component {
                   <div style={styles.inputField}>
                     <p style={styles.label}>Email</p>
                     <input type='email' name="email" style={styles.input} />
-                  </div>
+                  </div><br />
                   <div style={styles.inputField}>
                     <p style={styles.label}>Notes</p>
-                    <textarea rows="2" name="notes" cols="50" style={styles.input}/>
+                    <textarea rows="2" name="notes" style={styles.notesInput}/>
                   </div>
                   <hr style={styles.hr}/>
                   <div style={styles.footer}>
@@ -162,5 +161,6 @@ AddContact.propTypes = {
   saveContact: PropTypes.func.isRequired,
   openModal: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
-  modalOpen: PropTypes.bool.isRequired
+  modalOpen: PropTypes.bool.isRequired,
+  addContactButtonClass: PropTypes.string
 }
