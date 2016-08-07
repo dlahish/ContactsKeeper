@@ -41,7 +41,7 @@ export default class Table extends Component {
       <table style={styles.table}>
         <thead>
           <tr style={styles.tr}>
-            <td style={styles.th} width={'13%'}>First Name</td>
+            <td onClick={this.props.sortFirstName} style={styles.th} width={'13%'}>First Name<i className="fa fa-arrow-down down-arrow" aria-hidden="true"></i></td>
             <td style={styles.th} width={'13%'}>Last Name</td>
             <td style={styles.th} width={'10%'}>Date of Birth</td>
             <td style={styles.th} width={'13%'}>Phone</td>
@@ -69,5 +69,6 @@ export default class Table extends Component {
 }
 
 Table.propTypes = {
-  contacts: PropTypes.array.isRequired
+  contacts: PropTypes.array.isRequired,
+  sortFirstName: PropTypes.func.isRequired
 }

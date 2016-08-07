@@ -31,8 +31,6 @@ p, input { margin, padding: 0 }
   border-radius: 5px;
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
-  /*animation-name: animatetop;
-  animation-duration: 0.4s*/
 }
 
 .add-contact-button {
@@ -45,7 +43,7 @@ p, input { margin, padding: 0 }
   padding: 8px 12px;
   border-style: none;
   cursor: pointer;
-  -webkit-transition-duration: 0.2s; /* Safari */
+  -webkit-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
 
@@ -78,12 +76,12 @@ p, input { margin, padding: 0 }
     cursor: pointer;
 }
 
+.down-arrow {
+  padding-right: 10px;
+  float: right;
+}
+
 @-webkit-keyframes animatetop {
     from {top: -300px; opacity: 0}
     to {top: 0; opacity: 1}
 }
-/*
-@keyframes animatetop {
-    from {top: -300px; opacity: 0}
-    to {top: 50; opacity: 1}
-}*/

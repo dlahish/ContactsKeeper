@@ -13,9 +13,17 @@ const styles = {
   }
 }
 
-function filterContacts(contacts, searchInput) {
+function filterContacts(contacts, searchInput, sortFirstName) {
+  const sortedContacts = contacts
+
+  if (sortFirstName == 'up') {
+    sortedContacts = contacts.sort((a,b) => a.fname < b.fname)
+  } else if (sortFirstName == 'down') {
+    sortedContacts = contacts.sort((a,b) => a.fname > b.fname)
+  }
+
   if (searchInput.length == 0) {
-    return contacts
+    return sortedContacts
   }
 
   const con = contacts
@@ -29,7 +37,11 @@ function filterContacts(contacts, searchInput) {
       filteredContacts.push(contact)
     }
   })
-  return filteredContacts
+}
+
+function sortFirstName() {
+  let sortedContacts = this.props.contacts
+  return this.props.contacts.sort((a,b) => a.fname < b.fname)
 }
 
 class App extends Component {
@@ -39,9 +51,11 @@ class App extends Component {
     this.saveContact = this.saveContact.bind(this)
     this.handleOpenModal = this.handleOpenModal.bind(this)
     this.handleCloseModal = this.handleCloseModal.bind(this)
+    this.sortFirstName = this.sortFirstName.bind(this)
 
     this.state = {
-      addContactButtonClass: "add-contact-button"
+      addContactButtonClass: "add-contact-button",
+      sortFirstName: 'none'
     }
   }
 
@@ -69,8 +83,13 @@ class App extends Component {
     dispatch(closeModal())
   }
 
+  sortFirstName() {
+    console.log('FIRST NAME')
+    this.setState({ sortFirstName: 'up' })
+  }
+
   render() {
-    const filteredContacts = filterContacts(this.props.contacts, this.props.searchInput)
+    const filteredContacts = filterContacts(this.props.contacts, this.props.searchInput, this.state.sortFirstName)
     return (
       <div>
         <Header />
@@ -86,7 +105,10 @@ class App extends Component {
             modalOpen={this.props.modalOpen}
             addContactButtonClass={this.state.addContactButtonClass}
           />
-          <Table contacts={filteredContacts} />
+          <Table
+            contacts={filteredContacts}
+            sortFirstName={this.sortFirstName}
+          />
         </div>
       </div>
     )

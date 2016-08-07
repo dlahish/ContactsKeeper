@@ -46,6 +46,7 @@ function contacts(state = contactsInit, action) {
 const contactsInit = [
   {fname: 'Nadav', lname: 'Lachish', bod: '', phone:'0506803382', email: 'd_lahish@www.www', notes: 'well well'},
   {fname: 'Elad', lname: 'Gellert', bod: '', phone:'123455', email: '', note: ''},
+  {fname: 'Jenny', lname: 'Soffel', bod: '', phone:'8787878787', email: 'jenny@gmail.com', note: ''},
   {fname: 'Yoni', lname: 'Smile', bod: '', phone:'456', email: '', note: ''},
   {fname: 'Naama', lname: 'Kehaa', bod: '', phone:'', email: '', notes: ''},
   {fname: 'Eldad', lname: 'Larman', bod: '', phone:'', email: '', notes: ''},
