@@ -81,6 +81,20 @@ p, input { margin, padding: 0 }
   float: right;
 }
 
+.search-input {
+  font-size: 18px;
+  border: 2px solid grey;
+  border-radius: 3px;
+  border-right: none;
+  padding-left: 8px;
+}
+
+.search-input:focus {
+  outline: none;
+  background-color: #4d4d4d;
+  color: #f2f2f2;
+}
+
 @-webkit-keyframes animatetop {
     from {top: -300px; opacity: 0}
     to {top: 0; opacity: 1}

@@ -14,7 +14,7 @@ const styles = {
 }
 
 function filterContacts(contacts, searchInput, sortFirstName) {
-  const sortedContacts = contacts
+  let sortedContacts = contacts
 
   if (sortFirstName == 'up') {
     sortedContacts = contacts.sort((a,b) => a.fname < b.fname)
@@ -26,9 +26,8 @@ function filterContacts(contacts, searchInput, sortFirstName) {
     return sortedContacts
   }
 
-  const con = contacts
   let filteredContacts = []
-  con.map(contact => {
+  sortedContacts.map(contact => {
     const contactFirstTemp = contact.fname.toUpperCase().slice(0, searchInput.length)
     const searchFirstTemp  = searchInput.toUpperCase()
     const contactLastTemp = contact.lname.toUpperCase().slice(0, searchInput.length)
@@ -37,11 +36,7 @@ function filterContacts(contacts, searchInput, sortFirstName) {
       filteredContacts.push(contact)
     }
   })
-}
-
-function sortFirstName() {
-  let sortedContacts = this.props.contacts
-  return this.props.contacts.sort((a,b) => a.fname < b.fname)
+  return filteredContacts
 }
 
 class App extends Component {
@@ -84,8 +79,11 @@ class App extends Component {
   }
 
   sortFirstName() {
-    console.log('FIRST NAME')
-    this.setState({ sortFirstName: 'up' })
+    if (this.state.sortFirstName == 'none' || this.state.sortFirstName == 'down') {
+      this.setState({ sortFirstName: 'up' })
+    } else {
+      this.setState({ sortFirstName: 'down' })
+    }
   }
 
   render() {
@@ -108,6 +106,7 @@ class App extends Component {
           <Table
             contacts={filteredContacts}
             sortFirstName={this.sortFirstName}
+            sortFirstNameValue={this.state.sortFirstName}
           />
         </div>
       </div>

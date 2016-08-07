@@ -26,6 +26,12 @@ const styles = {
 }
 
 export default class Search extends Component {
+  preventEnterDefault(e) {
+    if (e.keyCode == 13) {
+      e.preventDefault()
+    }
+  }
+
   render() {
     const { value, onSearchChange } = this.props
     return (
@@ -34,8 +40,10 @@ export default class Search extends Component {
           type="text"
           value={value}
           onChange={onSearchChange}
+          onKeyDown={this.preventEnterDefault.bind(this)}
           placeholder="Search"
-          style={styles.input}
+          // style={styles.input}
+          className="search-input"
         />
         <i className="fa fa-search" type="submit" style={styles.icon}></i>
       </form>
