@@ -83,11 +83,15 @@ export default class AddContact extends Component {
 
   validate(e) {
     e.preventDefault()
-    const dob = e.target.dob.value
-    const year = dob.slice(0,4)
-    const month = dob.slice(5,7)
-    const day = dob.slice(8)
-    const formattedDob = day + '/' + month + '/' + year
+    let dob = e.target.dob.value
+    if (dob.length > 2) {
+      const year = dob.slice(0,4)
+      const month = dob.slice(5,7)
+      const day = dob.slice(8)
+      dob = day + '/' + month + '/' + year
+    } else {
+      dob = ''
+    }
 
     const fname = e.target.fname.value
     const lname = e.target.lname.value
@@ -95,7 +99,7 @@ export default class AddContact extends Component {
     const email = e.target.email.value
     const notes = e.target.notes.value
 
-    this.props.saveContact(fname, lname, formattedDob, phone, email, notes);
+    this.props.saveContact(fname, lname, dob, phone, email, notes);
   }
 
   render() {
