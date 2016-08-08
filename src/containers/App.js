@@ -13,13 +13,19 @@ const styles = {
   }
 }
 
-function filterContacts(contacts, searchInput, sortFirstName) {
+function filterContacts(contacts, searchInput, sortFirstName, sortLastName) {
   let sortedContacts = contacts
 
   if (sortFirstName == 'up') {
     sortedContacts = contacts.sort((a,b) => a.fname < b.fname)
   } else if (sortFirstName == 'down') {
     sortedContacts = contacts.sort((a,b) => a.fname > b.fname)
+  }
+
+  if (sortLastName == 'up') {
+    sortedContacts = contacts.sort((a,b) => a.lname < b.lname)
+  } else if (sortLastName == 'down') {
+    sortedContacts = contacts.sort((a,b) => a.lname > b.lname)
   }
 
   if (searchInput.length == 0) {
@@ -47,10 +53,12 @@ class App extends Component {
     this.handleOpenModal = this.handleOpenModal.bind(this)
     this.handleCloseModal = this.handleCloseModal.bind(this)
     this.sortFirstName = this.sortFirstName.bind(this)
+    this.sortLastName = this.sortLastName.bind(this)
 
     this.state = {
       addContactButtonClass: "add-contact-button",
-      sortFirstName: 'none'
+      sortFirstName: 'none',
+      sortLastName: 'none'
     }
   }
 
@@ -80,14 +88,34 @@ class App extends Component {
 
   sortFirstName() {
     if (this.state.sortFirstName == 'none' || this.state.sortFirstName == 'down') {
-      this.setState({ sortFirstName: 'up' })
+      this.setState({
+        sortFirstName: 'up',
+        sortLastName: 'none'
+      })
     } else {
-      this.setState({ sortFirstName: 'down' })
+      this.setState({
+        sortFirstName: 'down',
+        sortLastName: 'none'
+      })
+    }
+  }
+
+  sortLastName() {
+    if (this.state.sortLastName == 'none' || this.state.sortLastName == 'down') {
+      this.setState({
+        sortLastName: 'up',
+        sortFirstName: 'none'
+      })
+    } else {
+      this.setState({
+        sortLastName: 'down',
+        sortFirstName: 'none'
+      })
     }
   }
 
   render() {
-    const filteredContacts = filterContacts(this.props.contacts, this.props.searchInput, this.state.sortFirstName)
+    const filteredContacts = filterContacts(this.props.contacts, this.props.searchInput, this.state.sortFirstName, this.state.sortLastName)
     return (
       <div>
         <Header />
@@ -107,6 +135,8 @@ class App extends Component {
             contacts={filteredContacts}
             sortFirstName={this.sortFirstName}
             sortFirstNameValue={this.state.sortFirstName}
+            sortLastName={this.sortLastName}
+            sortLastNameValue={this.state.sortLastName}
           />
         </div>
       </div>

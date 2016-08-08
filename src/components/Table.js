@@ -20,7 +20,8 @@ const styles = {
     paddingTop: '6px',
     paddingBottom: '3px',
     fontSize: '12px',
-    margin: 0
+    margin: 0,
+    cursor: 'default'
   },
   td: {
     border: '1px solid',
@@ -43,10 +44,20 @@ function getFirstNameSortIcon(sortFirstNameValue) {
   }
 }
 
+function getLastNameSortIcon(sortLastNameValue) {
+  if (sortLastNameValue == 'none' || sortLastNameValue == 'down') {
+    return 'fa fa-arrow-down down-arrow'
+  } else {
+    return 'fa fa-arrow-up down-arrow'
+  }
+}
+
 export default class Table extends Component {
 
   render() {
     const firstNameIconClass = getFirstNameSortIcon(this.props.sortFirstNameValue)
+    const lastNameIconClass = getLastNameSortIcon(this.props.sortLastNameValue)
+
     return (
       <table style={styles.table}>
         <thead>
@@ -57,7 +68,13 @@ export default class Table extends Component {
               First Name
               <i className={firstNameIconClass} aria-hidden="true"></i>
             </td>
-            <td style={styles.th} width={'13%'}>Last Name</td>
+            <td
+              onClick={this.props.sortLastName}
+              style={styles.th}
+              width={'13%'}>
+              Last Name
+              <i className={lastNameIconClass} aria-hidden="true"></i>
+            </td>
             <td style={styles.th} width={'10%'}>Date of Birth</td>
             <td style={styles.th} width={'13%'}>Phone</td>
             <td style={styles.th} width={'18%'}>Email</td>
@@ -86,5 +103,7 @@ export default class Table extends Component {
 Table.propTypes = {
   contacts: PropTypes.array.isRequired,
   sortFirstName: PropTypes.func.isRequired,
-  sortFirstNameValue: PropTypes.string.isRequired
+  sortFirstNameValue: PropTypes.string.isRequired,
+  sortLastName: PropTypes.func.isRequired,
+  sortLastNameValue: PropTypes.string.isRequired,
 }
