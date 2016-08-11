@@ -7,19 +7,12 @@ const styles = {
   },
   icon: {
     position: 'relative',
-    height: '29px',
-    top: '8px',
-    right: '4px',
+    height: '30px',
+    top: '10px',
+    right: '5px',
     cursor: 'pointer',
     borderTopRightRadius: '4px',
     borderBottomRightRadius: '4px'
-  },
-  input: {
-    fontSize: '18px',
-    border: '2px solid grey',
-    borderRadius: '3px',
-    borderRight: 'none',
-    paddingLeft: '8px'
   }
 }
 

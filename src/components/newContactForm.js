@@ -27,8 +27,8 @@ const styles = {
     margin: 0,
     paddingBottom: '2px',
     fontSize: '12px',
-    fontWeight: '600',
-    color: '#616161'
+    fontWeight: '500',
+    color: '#0d0d0d'
   },
   input: {
     borderRadius: '3px',

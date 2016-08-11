@@ -95,10 +95,11 @@ p, input { margin, padding: 0 }
 }
 
 .search-input {
-  font-size: 18px;
+  font-size: 14px;
   border: 2px solid grey;
   border-radius: 3px;
   border-right: none;
+  line-height: 23px;
   padding-left: 8px;
 }
 
@@ -106,6 +107,7 @@ p, input { margin, padding: 0 }
   outline: none;
   background-color: #4d4d4d;
   color: #f2f2f2;
+  /*font-size: 18px;*/
 }
 
 @-webkit-keyframes animatetop {
