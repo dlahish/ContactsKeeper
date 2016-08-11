@@ -2,11 +2,13 @@ import React, { Component, PropTypes } from 'react'
 
 const styles = {
   modalHeader: {
-    backgroundColor: '#3366ff',
+    backgroundColor: '#1B5AA6',
     color: 'white',
     height: '30px',
     paddingTop: '10px',
-    paddingLeft: '10px'
+    paddingLeft: '17px',
+    borderTopRightRadius: '3px',
+    borderTopLeftRadius: '3px',
   },
   closeIcon: {
     float: 'right',
@@ -21,10 +23,12 @@ const styles = {
     marginBottom: '25px'
   },
   label: {
-    padding: 0,
+    paddingLeft: '1px',
     margin: 0,
     paddingBottom: '2px',
-    fontSize: '15px'
+    fontSize: '12px',
+    fontWeight: '600',
+    color: '#616161'
   },
   input: {
     borderRadius: '3px',
@@ -106,7 +110,9 @@ export default class newContactForm extends Component {
         <div className='modal' onKeyDown={this.handleEscKey}>
           <div style={styles.modalHeader}>
             Contacts Keeper
-            <i className="fa fa-times-circle close" aria-hidden="true" style={styles.closeIcon} onClick={this.props.closeModal}></i>
+            <div className="closeIconWrapper">
+              <i className="fa fa-times-circle close" aria-hidden="true" style={styles.closeIcon} onClick={this.props.closeModal}></i>
+            </div>
           </div>
           <div style={styles.mainContent}>
             <form onSubmit={this.validateNewContactForm}>
@@ -120,7 +126,7 @@ export default class newContactForm extends Component {
               </div>
               <div style={styles.inputField}>
                 <p style={styles.label}>Date of Birth</p>
-                <input type="date" name="dateOfBirth" style={styles.input}/>
+                <input type="text" name="dateOfBirth" style={styles.input}/>
               </div>
               <div style={styles.inputFieldRight}>
                 <p style={styles.label}>Phone Number</p>

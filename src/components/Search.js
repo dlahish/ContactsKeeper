@@ -1,20 +1,18 @@
 import React, { Component, PropTypes } from 'react'
-import searchIcon from '../../media/search_icon.png'
+import searchIcon from '../../media/search-icon.png'
 
 const styles = {
   form: {
     display: 'inline'
   },
   icon: {
-    backgroundColor: '#4d79ff',
-    color: '#f2f2f2',
-    padding: '3 5 4 5',
-    fontSize: '20px',
     position: 'relative',
-    top: '0px',
-    right: '3px',
+    height: '29px',
+    top: '8px',
+    right: '4px',
     cursor: 'pointer',
-    borderRadius: '4px'
+    borderTopRightRadius: '4px',
+    borderBottomRightRadius: '4px'
   },
   input: {
     fontSize: '18px',
@@ -44,7 +42,7 @@ export default class Search extends Component {
           placeholder="Search"
           className="search-input"
         />
-        <i className="fa fa-search" type="submit" style={styles.icon}></i>
+        <img src={searchIcon} style={styles.icon}/>
       </form>
     )
   }

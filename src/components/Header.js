@@ -2,9 +2,9 @@ import React from 'react'
 
 const style = {
   main: {
-    backgroundColor: '#ff751a',
+    backgroundColor: '#EB6B25',
     height: '50px',
-    color: '#f2f2f2',
+    color: '#FCEFE4',
     fontSize: '20px',
     fontWeight: '400',
     paddingTop: '30px',
@@ -12,7 +12,7 @@ const style = {
   },
 
   bottom: {
-    backgroundColor: 'grey',
+    backgroundColor: '#E2E2E2',
     opacity: 0.5,
     height: '20px',
     marginBottom: '40px'
