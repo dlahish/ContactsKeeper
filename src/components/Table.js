@@ -74,9 +74,9 @@ export default class Table extends Component {
           {this.props.contacts.map((contact,i) => {
             return (
               <tr key={i}>
-                <td style={styles.td}>{contact.fname}</td>
-                <td style={styles.td}>{contact.lname}</td>
-                <td style={styles.td}>{contact.dob}</td>
+                <td style={styles.td}>{contact.firstName}</td>
+                <td style={styles.td}>{contact.lastName}</td>
+                <td style={styles.td}>{contact.dateOfBirth}</td>
                 <td style={styles.td}>{contact.phone}</td>
                 <td style={styles.td}>{contact.email}</td>
                 <td style={styles.td}>{contact.notes}</td>

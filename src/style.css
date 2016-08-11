@@ -63,10 +63,11 @@ p, input { margin, padding: 0 }
 }
 
 .close {
-    color: #aaa;
+    color: #ff751a;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    background-color: white;
 }
 
 .close:hover,

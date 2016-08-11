@@ -30,9 +30,9 @@ function contacts(state = contactsInit, action) {
   switch (action.type) {
     case SAVE_CONTACT:
       let newContact = {
-        fname: action.fname,
-        lname: action.lname,
-        dob: action.dob,
+        firstName: action.firstName,
+        lastName: action.lastName,
+        dateOfBirth: action.dateOfBirth,
         phone: action.phone,
         email: action.email,
         notes: action.notes
@@ -44,13 +44,13 @@ function contacts(state = contactsInit, action) {
 }
 
 const contactsInit = [
-  {fname: 'Nadav', lname: 'Lachish', bod: '', phone:'0506803382', email: 'd_lahish@www.www', notes: 'well well'},
-  {fname: 'Elad', lname: 'Gellert', bod: '', phone:'123455', email: '', note: ''},
-  {fname: 'Jenny', lname: 'Soffel', bod: '', phone:'8787878787', email: 'jenny@gmail.com', note: ''},
-  {fname: 'Yoni', lname: 'Smile', bod: '', phone:'456', email: '', note: ''},
-  {fname: 'Naama', lname: 'Kehaa', bod: '', phone:'', email: '', notes: ''},
-  {fname: 'Eldad', lname: 'Larman', bod: '', phone:'', email: '', notes: ''},
-  {fname: 'Elia', lname: 'Geller', bod: '', phone:'', email: '', notes: ''}
+  {firstName: 'Nadav', lastName: 'Lachish', bod: '', phone:'0506803382', email: 'd_lahish@www.www', notes: 'well well'},
+  {firstName: 'Elad', lastName: 'Gellert', bod: '', phone:'123455', email: '', note: ''},
+  {firstName: 'Jenny', lastName: 'Soffel', bod: '', phone:'8787878787', email: 'jenny@gmail.com', note: ''},
+  {firstName: 'Yoni', lastName: 'Smile', bod: '', phone:'456', email: '', note: ''},
+  {firstName: 'Naama', lastName: 'Kehaa', bod: '', phone:'', email: '', notes: ''},
+  {firstName: 'Eldad', lastName: 'Larman', bod: '', phone:'', email: '', notes: ''},
+  {firstName: 'Elia', lastName: 'Geller', bod: '', phone:'', email: '', notes: ''}
 ]
 
 export default combineReducers({

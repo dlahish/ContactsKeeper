@@ -22,9 +22,9 @@ export function searchInput(searchInput) {
   }
 }
 
-export function saveContactToStore(fname, lname, dob, phone, email, notes) {
+export function saveContactToStore(firstName, lastName, dateOfBirth, phone, email, notes) {
   return {
     type: SAVE_CONTACT,
-    fname, lname, dob, phone, email, notes
+    firstName, lastName, dateOfBirth, phone, email, notes
   }
 }

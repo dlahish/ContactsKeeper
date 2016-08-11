@@ -18,15 +18,15 @@ function filterContacts(contacts, searchInput, sortFirstName, sortLastName) {
   let sortedContacts = contacts
 
   if (sortFirstName == 'up') {
-    sortedContacts = contacts.sort((a,b) => a.fname < b.fname)
+    sortedContacts = contacts.sort((a,b) => a.firstName < b.firstName)
   } else if (sortFirstName == 'down') {
-    sortedContacts = contacts.sort((a,b) => a.fname > b.fname)
+    sortedContacts = contacts.sort((a,b) => a.firstName > b.firstName)
   }
 
   if (sortLastName == 'up') {
-    sortedContacts = contacts.sort((a,b) => a.lname < b.lname)
+    sortedContacts = contacts.sort((a,b) => a.lastName < b.lastName)
   } else if (sortLastName == 'down') {
-    sortedContacts = contacts.sort((a,b) => a.lname > b.lname)
+    sortedContacts = contacts.sort((a,b) => a.lastName > b.lastName)
   }
 
   if (searchInput.length == 0) {
@@ -35,9 +35,9 @@ function filterContacts(contacts, searchInput, sortFirstName, sortLastName) {
 
   let filteredContacts = []
   sortedContacts.map(contact => {
-    const contactFirstTemp = contact.fname.toUpperCase().slice(0, searchInput.length)
+    const contactFirstTemp = contact.firstName.toUpperCase().slice(0, searchInput.length)
     const searchFirstTemp  = searchInput.toUpperCase()
-    const contactLastTemp = contact.lname.toUpperCase().slice(0, searchInput.length)
+    const contactLastTemp = contact.lastName.toUpperCase().slice(0, searchInput.length)
     const searchLastTemp  = searchInput.toUpperCase()
     if (contactFirstTemp == searchFirstTemp || contactLastTemp == searchLastTemp) {
       filteredContacts.push(contact)
@@ -80,11 +80,10 @@ class App extends Component {
     dispatch(searchInput(e.target.value))
   }
 
-  saveContact(fname, lname, dob, phone, email, notes) {
+  saveContact(firstName, lastName, dateOfBirth, phone, email, notes) {
     const { dispatch } = this.props
-
-    dispatch(saveContactToStore(fname, lname, dob, phone, email, notes))
-    dispatch(closeModal())
+    dispatch(saveContactToStore(firstName, lastName, dateOfBirth, phone, email, notes))
+    this.handleCloseModal()
   }
 
   sortFirstName() {

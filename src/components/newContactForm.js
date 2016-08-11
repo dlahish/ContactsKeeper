@@ -75,23 +75,23 @@ export default class newContactForm extends Component {
 
   validateNewContactForm(e) {
     e.preventDefault()
-    let dob = e.target.dob.value
-    if (dob.length > 2) {
-      const year = dob.slice(0,4)
-      const month = dob.slice(5,7)
-      const day = dob.slice(8)
-      dob = day + '/' + month + '/' + year
+    let dateOfBirth = e.target.dateOfBirth.value
+    if (dateOfBirth.length > 2) {
+      const year = dateOfBirth.slice(0,4)
+      const month = dateOfBirth.slice(5,7)
+      const day = dateOfBirth.slice(8)
+      dateOfBirth = day + '/' + month + '/' + year
     } else {
-      dob = ''
+      dateOfBirth = ''
     }
 
-    const fname = e.target.fname.value
-    const lname = e.target.lname.value
+    const firstName = e.target.firstName.value
+    const lastName = e.target.lastName.value
     const phone = e.target.phone.value
     const email = e.target.email.value
     const notes = e.target.notes.value
 
-    this.props.saveContact(fname, lname, dob, phone, email, notes);
+    this.props.saveContact(firstName, lastName, dateOfBirth, phone, email, notes);
   }
 
   handleEscKey(e) {
@@ -112,15 +112,15 @@ export default class newContactForm extends Component {
             <form onSubmit={this.validateNewContactForm}>
               <div style={styles.inputField}>
                 <p style={styles.label}>First Name</p>
-                <input autoFocus type='text' name="fname" style={styles.input} required/>
+                <input autoFocus type='text' name="firstName" style={styles.input} required/>
               </div>
               <div style={styles.inputFieldRight}>
                 <p style={styles.label}>Last Name</p>
-                <input type='text' name="lname" style={styles.input} required/>
+                <input type='text' name="lastName" style={styles.input} required/>
               </div>
               <div style={styles.inputField}>
                 <p style={styles.label}>Date of Birth</p>
-                <input type="date" name="dob" style={styles.input}/>
+                <input type="date" name="dateOfBirth" style={styles.input}/>
               </div>
               <div style={styles.inputFieldRight}>
                 <p style={styles.label}>Phone Number</p>
