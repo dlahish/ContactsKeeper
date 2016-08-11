@@ -21,7 +21,6 @@ const styles = {
   },
   mainContent: {
     padding: '3%',
-    // borderBottom: '1px solid grey',
     paddingBottom: '1px'
   },
   inputField: {

@@ -26,6 +26,5 @@ export default () =>
       Contacts Keeper
     </div>
     <div style={style.bottom}>
-
     </div>
   </div>

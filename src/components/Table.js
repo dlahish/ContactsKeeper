@@ -36,28 +36,17 @@ const styles = {
   }
 }
 
-function getFirstNameSortIcon(sortFirstNameValue) {
-  if (sortFirstNameValue == 'none' || sortFirstNameValue == 'down') {
-    return 'fa fa-arrow-down down-arrow'
-  } else {
-    return 'fa fa-arrow-up down-arrow'
+function arrowClass(direction) {
+  if (direction === 'none') {
+    direction = 'down'
   }
-}
 
-function getLastNameSortIcon(sortLastNameValue) {
-  if (sortLastNameValue == 'none' || sortLastNameValue == 'down') {
-    return 'fa fa-arrow-down down-arrow'
-  } else {
-    return 'fa fa-arrow-up down-arrow'
-  }
+  return `fa down-arrow fa-arrow-${direction}`
 }
 
 export default class Table extends Component {
 
   render() {
-    const firstNameIconClass = getFirstNameSortIcon(this.props.sortFirstNameValue)
-    const lastNameIconClass = getLastNameSortIcon(this.props.sortLastNameValue)
-
     return (
       <table style={styles.table}>
         <thead>
@@ -66,14 +55,14 @@ export default class Table extends Component {
               onClick={this.props.sortFirstName}
               style={styles.th} width={'13%'}>
               First Name
-              <i className={firstNameIconClass} aria-hidden="true"></i>
+              <i className={arrowClass(this.props.sortFirstNameValue)} aria-hidden="true"></i>
             </td>
             <td
               onClick={this.props.sortLastName}
               style={styles.th}
               width={'13%'}>
               Last Name
-              <i className={lastNameIconClass} aria-hidden="true"></i>
+              <i className={arrowClass(this.props.sortLastNameValue)} aria-hidden="true"></i>
             </td>
             <td style={styles.th} width={'10%'}>Date of Birth</td>
             <td style={styles.th} width={'13%'}>Phone</td>

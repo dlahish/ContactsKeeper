@@ -53,10 +53,8 @@ const contactsInit = [
   {fname: 'Elia', lname: 'Geller', bod: '', phone:'', email: '', notes: ''}
 ]
 
-const rootReducer = combineReducers({
+export default combineReducers({
   contacts,
   search,
   modal
 })
-
-export default rootReducer

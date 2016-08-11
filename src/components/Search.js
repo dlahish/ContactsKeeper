@@ -40,9 +40,8 @@ export default class Search extends Component {
           type="text"
           value={value}
           onChange={onSearchChange}
-          onKeyDown={this.preventEnterDefault.bind(this)}
+          onKeyDown={this.preventEnterDefault}
           placeholder="Search"
-          // style={styles.input}
           className="search-input"
         />
         <i className="fa fa-search" type="submit" style={styles.icon}></i>

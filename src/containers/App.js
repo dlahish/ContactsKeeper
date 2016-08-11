@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { searchInput, saveContactToStore, openModal, closeModal } from '../actions'
-import AddContact from '../components/AddContact'
+import AddContactButton from '../components/AddContactButton'
+import NewContactForm from '../components/newContactForm'
 import Header from '../components/Header'
 import Search from '../components/Search'
 import Table from '../components/Table'
@@ -124,13 +125,16 @@ class App extends Component {
             value={this.props.searchInput}
             onSearchChange={this.handleSearchInputChange}
           />
-          <AddContact
-            saveContact={this.saveContact}
+          <AddContactButton
             openModal={this.handleOpenModal}
-            closeModal={this.handleCloseModal}
-            modalOpen={this.props.modalOpen}
             addContactButtonClass={this.state.addContactButtonClass}
           />
+          {this.props.modalOpen ?
+            <NewContactForm
+              saveContact={this.saveContact}
+              closeModal={this.handleCloseModal}
+            /> : ''
+          }
           <Table
             contacts={filteredContacts}
             sortFirstName={this.sortFirstName}
