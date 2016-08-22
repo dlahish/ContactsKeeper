@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import data from './data.json'
 import {
   SEARCH_INPUT,
   SAVE_CONTACT,
@@ -26,7 +27,7 @@ function search(state = '', action) {
   }
 }
 
-function contacts(state = contactsInit, action) {
+function contacts(state = data, action) {
   switch (action.type) {
     case SAVE_CONTACT:
       let newContact = {
@@ -42,16 +43,6 @@ function contacts(state = contactsInit, action) {
       return state
   }
 }
-
-const contactsInit = [
-  {firstName: 'Nadav', lastName: 'Lachish', bod: '', phone:'0506803382', email: 'd_lahish@www.www', notes: 'well well'},
-  {firstName: 'Elad', lastName: 'Gellert', bod: '', phone:'123455', email: '', note: ''},
-  {firstName: 'Jenny', lastName: 'Soffel', bod: '', phone:'8787878787', email: 'jenny@gmail.com', note: ''},
-  {firstName: 'Yoni', lastName: 'Smile', bod: '', phone:'456', email: '', note: ''},
-  {firstName: 'Naama', lastName: 'Kehaa', bod: '', phone:'', email: '', notes: ''},
-  {firstName: 'Eldad', lastName: 'Larman', bod: '', phone:'', email: '', notes: ''},
-  {firstName: 'Elia', lastName: 'Geller', bod: '', phone:'', email: '', notes: ''}
-]
 
 export default combineReducers({
   contacts,
