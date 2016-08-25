@@ -115,6 +115,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('PROCESS ----' + process.env.NODE_ENV);
     const filteredContacts = filterContacts(this.props.contacts, this.props.searchInput, this.state.sortFirstName, this.state.sortLastName)
     return (
       <div>
