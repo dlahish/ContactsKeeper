@@ -26,8 +26,6 @@
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
     "style-loader": "^0.13.1",
-    "file-loader": "^0.9.0",
-    "webpack": "^1.12.9",
     "webpack-preset": "^0.2.0",
     "webpack-preset-babel": "^0.2.0",
     "webpack-preset-babel-stage-1": "^0.2.0"
